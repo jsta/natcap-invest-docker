@@ -1,7 +1,7 @@
 This repo is a docker wrapper around NatCap's InVEST:
 https://github.com/natcap/invest.
 
-Currently the focus is on running the pollination model but it could easily be
+Currently the focus is on running the NDR model but it could easily be
 adapted to run any of the other models.
 
 ## Running the image
@@ -13,7 +13,7 @@ We use a version scheme for GitHub and DockerHub tags: `{our version}_{InVEST
 version}`, for example `1.0.0_3.4.2` means 1.0.0 is our version and we're using
 version 3.4.2 of InVEST. Check DockerHub for the latest tag.
 
-The image contains all the data it needs to run the pollination model, we just
+The image contains all the data it needs to run the NDR model, we just
 want to mount a volume so we can get the results on the host.
 ```bash
 mkdir /tmp/output
@@ -22,7 +22,7 @@ docker run \
  --rm \
  -it \
  -v /tmp/output:/workspace \
- ternandsparrow/natcap-invest-docker:1.1.3_3.8.9
+ jsta/natcap-invest-docker:0.1.1_3.9.0
 
 sudo chown -R `id -u` /tmp/output
 # now browse to /tmp/output to see the output files
@@ -34,9 +34,9 @@ out but the log messages don't seem to be flushed until the end of the run.
 
 The build is fully automated and will download everything it needs.
 ```bash
-tagVersion=1.1.3_3.8.9 # TODO change this to suit
+tagVersion=0.1.1_3.9.0 # TODO change this to suit
 cd natcap-invest-docker/
-docker build -t ternandsparrow/natcap-invest-docker:$tagVersion
+docker build -t jsta/natcap-invest-docker:$tagVersion
 # see above for how to run it
 ```
 
@@ -62,29 +62,6 @@ remote debugger (like vscode) to the Docker container. You can do it like this:
 
 ## Changelog
 
-### 1.1.4_3.8.9
+### 0.1.1_3.9.0
 
- - move sample data from `/data/pollination` to `/data/pollination-sample`
-
-### 1.1.3_3.8.9
-
- - update to `3.8.9` of InVEST
- - update docker base image to one with that is still supported and has 2.x GDAL
-
-### 1.1.2_3.8.0
-
- - fix the entrypoint
- - add remote (outside container) debugging capability
-
-### 1.1.1_3.8.0
-
- - move to version 3.8.0 of invest
- - using python 3.7 now, not that if affects the external facing API of our app
-
-### 1.1.1_3.6.0
-
- - streamline install of python requirements
-
-### 1.1.0_3.6.0
-
- - move to version 3.6.0 of invest (model runtimes seem to have doubled)
+ - cloned from https://github.com/ternandsparrow/natcap-invest-docker

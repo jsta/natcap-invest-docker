@@ -1,12 +1,12 @@
 # coding=UTF-8
-# hardcoded demo runner script for the pollination model using the sample data
+# hardcoded demo runner script for the ndr model using the sample data
 # from natcap.
 
 import time
 import sys
 import os
 import logging
-import natcap.invest.pollination
+import natcap.invest.ndr
 
 logging.basicConfig(stream=sys.stdout, level=logging.WARN)
 
@@ -15,16 +15,21 @@ def now():
 start_ms = now()
 print('[INFO] starting up')
 
-dataDir = u'/data/pollination-sample'
-
+data_dir = "data/NDR/"
 args = {
-    u'farm_vector_path': dataDir + u'/farms.shp',
-    u'guild_table_path': dataDir + u'/guild_table.csv',
-    u'landcover_biophysical_table_path': dataDir + u'/landcover_biophysical_table.csv',
-    u'landcover_raster_path': dataDir + u'/landcover.tif',
-    u'results_suffix': u'',
-    u'workspace_dir': u'/workspace/pollination-sample',
-}
+    "workspace_dir": "workspace", 
+    "dem_path": data_dir + "DEM_gura.tif", 
+    "lulc_path": data_dir + "land_use_gura.tif", 
+    "runoff_proxy_path": data_dir + "precipitation_gura.tif",
+    "watersheds_path": data_dir + "watershed_gura.shp",
+    "biophysical_table_path": data_dir + "biophysical_table_gura.csv",    
+    "calc_p": True,
+    "calc_n": False,
+    "threshold_flow_accumulation": 1000,
+    "k_param": 2,
+    "subsurface_eff_p": 0, # not used for p model
+    "subsurface_critical_length_p": 0 # not used for p model
+     }
 
 if __name__ == '__main__':
     ptvsd_enable = os.getenv('PTVSD_ENABLE', default=0)
@@ -38,7 +43,7 @@ if __name__ == '__main__':
         ptvsd.wait_for_attach()
         print('[INFO] debugger is attached, breakpointing so you can set your own breakpoints')
         breakpoint()
-    print('[INFO] starting execution of pollination model')
-    natcap.invest.pollination.execute(args)
+    print('[INFO] starting execution of the ndr model')
+    natcap.invest.ndr.execute(args)
     elapsed_time = now() - start_ms
-    print('[INFO] finished execution of pollination model, elapsed time {}ms'.format(elapsed_time))
+    print('[INFO] finished execution of the ndr model, elapsed time {}ms'.format(elapsed_time))

@@ -2,13 +2,14 @@
 set -euo pipefail
 
 # can be any git commit-ish (tags, commits, branches)
-investCodeVersion=3.8.9
+investCodeVersion=3.9.0
 
-# check http://releases.naturalcapitalproject.org/?prefix=invest/3.8.9/data/ for
+# check http://releases.naturalcapitalproject.org/?prefix=invest/3.9.0/data/ for
 # options.
 # NOTE: this data is only an example used for the tester UI, it is NOT used
 #       for running in production when the user supplies data.
-investDataUrl='https://www.googleapis.com/download/storage/v1/b/releases.naturalcapitalproject.org/o/invest%2F3.8.9%2Fdata%2Fpollination.zip?generation=1600197914247447&alt=media'
+investDataUrl='https://storage.googleapis.com/releases.naturalcapitalproject.org/invest/3.9.0/data/NDR.zip'
+
 
 # stop tzdata from prompting for a TZ, thanks https://stackoverflow.com/questions/44331836/apt-get-install-tzdata-noninteractive#comment91752692_44333806
 export DEBIAN_FRONTEND=noninteractive
@@ -22,11 +23,11 @@ apt-get install --assume-yes --no-install-recommends \
 
 
 pushd /data
-poll_zip=pollination.zip
-wget -O $poll_zip "$investDataUrl"
-unzip $poll_zip
-rm $poll_zip
-mv pollination pollination-sample
+ndr_zip=NDR.zip
+wget -O $ndr_zip "$investDataUrl"
+unzip $ndr_zip
+rm $ndr_zip
+mv NDR NDR-sample
 popd
 
 pip3 install numpy Cython ptvsd
