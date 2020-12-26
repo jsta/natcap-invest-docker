@@ -17,10 +17,11 @@ export DEBIAN_FRONTEND=noninteractive
 apt-get update
 apt-get dist-upgrade --assume-yes
 apt-get install --assume-yes --no-install-recommends \
-  libgdal20 \
-  libgdal-dev \
-  libspatialindex-c5
-
+  python3-dev \
+  python3-setuptools \
+  python3-gdal \
+  python3-rtree \
+  python3-shapely
 
 pushd /data
 ndr_zip=NDR.zip
