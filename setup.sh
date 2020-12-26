@@ -17,6 +17,7 @@ export DEBIAN_FRONTEND=noninteractive
 apt-get update
 apt-get dist-upgrade --assume-yes
 apt-get install --assume-yes --no-install-recommends \
+  libgdal-dev \
   python3-dev \
   python3-setuptools \
   python3-gdal \
