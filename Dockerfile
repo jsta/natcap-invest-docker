@@ -1,8 +1,22 @@
-FROM python:3.8-buster
+FROM continuumio/miniconda3
 
+# Create the environment:
+COPY environment.yml .
+RUN conda env create -f environment.yml
+
+# Make RUN commands use the new environment:
+SHELL ["conda", "run", "-n", "myenv", "/bin/bash", "-c"]
+
+# Make sure the environment is activated:
+RUN echo "Make sure natcap.invest is installed:"
+RUN python -c "import natcap.invest"
+
+# Add sample data
 ADD setup.sh .
 RUN \
   mkdir -p /data /workspace && \
   /bin/bash setup.sh
-ADD run-pollination.py /data
-ENTRYPOINT [ "python3", "/data/run-pollination.py" ]
+
+# The code to run when container is started:
+ADD run-ndr.py /data
+ENTRYPOINT ["conda", "run", "-n", "myenv", "python", "run-ndr.py"]
