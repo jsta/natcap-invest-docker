@@ -8,8 +8,8 @@ RUN conda env create -f environment.yml
 SHELL ["conda", "run", "-n", "r-invest", "/bin/bash", "-c"]
 
 # Make sure the environment is activated:
-RUN echo "Make sure natcap.invest is installed:"
-RUN python -c "import natcap.invest"
+# RUN echo "Make sure natcap.invest is installed:"
+# RUN python -c "import natcap.invest"
 
 # Add sample data
 ADD setup.sh .
@@ -19,4 +19,5 @@ RUN \
 
 # The code to run when container is started:
 ADD run-ndr.py /data
-ENTRYPOINT ["conda", "run", "-n", "r-invest", "python", "run-ndr.py"]
+# ENTRYPOINT ["conda", "run", "-n", "r-invest", "python", "run-ndr.py"]
+ENTRYPOINT ["conda", "run", "-n", "r-invest", "/bin/bash"]
