@@ -1,8 +1,9 @@
 FROM continuumio/miniconda3
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-    libgdal-dev    
+    && apt-get install -y \
+    libgdal-dev \
+    build-essential
 
 # Create the environment:
 COPY environment.yml .
@@ -12,8 +13,8 @@ RUN conda env create -f environment.yml
 SHELL ["conda", "run", "-n", "r-invest", "/bin/bash", "-c"]
 
 # Make sure the environment is activated:
-# RUN echo "Make sure natcap.invest is installed:"
-# RUN python -c "import natcap.invest"
+RUN echo "Make sure natcap.invest is installed:"
+RUN python -c "import natcap.invest"
 
 # Add sample data
 ADD setup.sh .

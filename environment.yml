@@ -24,6 +24,7 @@ dependencies:
 - xlrd>=1.2.0
 - xlwt
 - pip:
+  - pygeoprocessing>=1.9.2,<2.0  # pip-only
   - PyInstaller==3.5  # pip-only
   - pypiwin32; sys_platform == 'win32'  # pip-only
   - Pyro4==4.77  # pip-only
@@ -32,3 +33,4 @@ dependencies:
   - qtpy>1.3  # pip-only
   - setuptools_scm
   - sphinx-rtd-theme
+  - natcap.invest
