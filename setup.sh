@@ -15,12 +15,12 @@ mv NDR NDR-sample
 popd
 
 # we can remove the dev dependencies after building the python bindings
-apt-get purge --assume-yes \
-  libgdal-dev
-apt-get autoremove --assume-yes
-apt-get --assume-yes clean
-rm -rf \
-  /var/lib/apt/lists/* \
-  /tmp/* \
-  /var/tmp/*
-rm setup.sh
+# apt-get purge --assume-yes \
+#   libgdal-dev
+# apt-get autoremove --assume-yes
+# apt-get --assume-yes clean
+# rm -rf \
+#   /var/lib/apt/lists/* \
+#   /tmp/* \
+#   /var/tmp/*
+# rm setup.sh

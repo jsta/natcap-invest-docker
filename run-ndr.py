@@ -6,7 +6,7 @@ import time
 import sys
 import os
 import logging
-import natcap.invest.ndr
+from natcap.invest.ndr import ndr
 
 logging.basicConfig(stream=sys.stdout, level=logging.WARN)
 
@@ -15,7 +15,7 @@ def now():
 start_ms = now()
 print('[INFO] starting up')
 
-data_dir = "data/NDR/"
+data_dir = "data/NDR-sample/NDR/"
 args = {
     "workspace_dir": "workspace", 
     "dem_path": data_dir + "DEM_gura.tif", 
@@ -44,6 +44,6 @@ if __name__ == '__main__':
         print('[INFO] debugger is attached, breakpointing so you can set your own breakpoints')
         breakpoint()
     print('[INFO] starting execution of the ndr model')
-    natcap.invest.ndr.execute(args)
+    ndr.execute(args)
     elapsed_time = now() - start_ms
     print('[INFO] finished execution of the ndr model, elapsed time {}ms'.format(elapsed_time))
