@@ -1,5 +1,5 @@
 This repo is a docker wrapper around NatCap's InVEST:
-https://github.com/natcap/invest.
+https://github.com/natcap/invest
 
 Currently the focus is on running the NDR model but it could easily be
 adapted to run any of the other models.
