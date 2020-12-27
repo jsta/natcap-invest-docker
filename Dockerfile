@@ -1,5 +1,9 @@
 FROM continuumio/miniconda3
 
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+    libgdal-dev    
+
 # Create the environment:
 COPY environment.yml .
 RUN conda env create -f environment.yml
