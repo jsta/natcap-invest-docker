@@ -15,7 +15,7 @@ def now():
 start_ms = now()
 print('[INFO] starting up')
 
-data_dir = "data/NDR-sample/NDR/"
+data_dir = "data/NDR-sample/"
 args = {
     "workspace_dir": "workspace", 
     "dem_path": data_dir + "DEM_gura.tif", 
