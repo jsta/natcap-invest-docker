@@ -27,5 +27,5 @@ RUN \
 
 # The code to run when container is started:
 ADD run-ndr.py /data
-ENTRYPOINT ["conda", "run", "-n", "r-invest", "python", "data/run-ndr.py"]
-# ENTRYPOINT ["conda", "run", "-n", "r-invest", "/bin/bash"]
+# ENTRYPOINT ["conda", "run", "-n", "r-invest", "python", "run-ndr.py"]
+ENTRYPOINT ["conda", "run", "-n", "r-invest", "/bin/bash"]
