@@ -14,4 +14,5 @@ test2:
 	-v /tmp/output:/workspace \
 	jsta/natcap-invest-docker:latest conda run -n r-invest python run-ndr.py
 
-
+natcap-invest-docker.tar.gz: | README.md
+	docker save jsta/natcap-invest-docker:latest | gzip > natcap-invest-docker.tar.gz
