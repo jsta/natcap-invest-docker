@@ -1,3 +1,5 @@
+[![Docker Build](https://img.shields.io/static/v1?label=Docker%20Image&message=jsta/natcap-invest-docker&color=blue)](https://hub.docker.com/r/jsta/natcap-invest-docker)
+
 This repo is a docker wrapper around NatCap's InVEST:
 https://github.com/natcap/invest
 
