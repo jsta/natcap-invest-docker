@@ -1,3 +1,6 @@
+build:
+	docker build -t jsta/natcap-invest-docker:latest .
+
 interactive:
 	docker run -it --entrypoint /bin/bash jsta/natcap-invest-docker:latest
 
