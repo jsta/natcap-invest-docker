@@ -5,7 +5,7 @@ RUN apt-get update \
     libgdal-dev \
     build-essential \
     vim \
-    gfortran \
+    r-base \
     unzip
 
 # Create the environment:
