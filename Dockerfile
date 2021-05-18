@@ -5,7 +5,6 @@ RUN apt-get update \
     libgdal-dev \
     build-essential \
     vim \
-    r-base \
     unzip
 
 # Create the environment:
