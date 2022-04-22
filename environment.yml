@@ -44,3 +44,4 @@ dependencies:
   - setuptools_scm>=6.4.0
   - sphinx-rtd-theme
   - sphinx-reredirects
+  - natcap.invest
